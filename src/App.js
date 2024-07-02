@@ -1,10 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import { Fragment } from 'react';
-import ProductList from './components/ProductList/ProductList';
-import Header from './components/Header/Header';
+import { Fragment, useEffect } from 'react';
+import {ProductList,Header} from './components';
+import { useDispatch } from 'react-redux';
+
 
 function App() {
+  const dispatch=useDispatch();
+  useEffect(()=>{
+    dispatch(fetchUser())
+  },[])
   return (
     <Fragment>
     <Header/>
