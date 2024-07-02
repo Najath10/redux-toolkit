@@ -1,13 +1,29 @@
-import React from 'react'
-import "./CartButtons.css"
-const Aftercart = () => {
-  return (
-    <div className='after-cart'>
-        <button className="cart-counter-btn"></button>
-      <div className='cart-count'>1</div>
-      <button className='cart-counter-btn'>+</button>
-    </div>
-  )
-}
+import React from "react";
+import { useDispatch ,useSelector} from "react-redux";
+import { decrement, increment } from "../../../redux/cart";
+import "./CartButtons.css";
 
-export default Aftercart
+
+const Aftercart = () => {
+    const {cartCount }=useSelector((state)=>state.cart)
+  const dispatch = useDispatch();
+  return (
+    <div className="after-cart">
+      <button
+        className="cart-counter-btn"
+        onClick={() => dispatch(decrement())}
+      >
+        -
+      </button>
+      <div className="cart-count">{cartCount}</div>
+      <button
+        className="cart-counter-btn"
+        onClick={() => dispatch(increment())}
+      >
+        +
+      </button>
+    </div>
+  );
+};
+
+export default Aftercart;
